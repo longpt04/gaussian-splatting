@@ -1,0 +1,32 @@
+name: gaussian_splatting_rtx50
+
+channels:
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - cuda-nvcc=12.8
+  - cuda-cudart-dev=12.8
+  - gcc_linux-64=11
+  - gxx_linux-64=11
+  - libxcrypt
+  - plyfile
+  - tqdm
+  - ninja
+  - pip:
+      - --index-url https://download.pytorch.org/whl/cu128
+      - torch==2.7.0
+      - torchvision==0.22.0
+      - torchaudio==2.7.0
+      - --extra-index-url https://pypi.org/simple
+      - opencv-python
+      - joblib
+      - pandas
+
+variables:
+  CC: x86_64-conda-linux-gnu-cc
+  CXX: x86_64-conda-linux-gnu-c++
+  TORCH_CUDA_ARCH_LIST: "8.6;8.9;9.0;10.0;12.0"

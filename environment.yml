@@ -1,20 +1,38 @@
-name: gaussian_splatting
+name: gaussian_splatting_long
+
 channels:
   - pytorch
+  - nvidia
   - conda-forge
   - defaults
+
 dependencies:
-  - cudatoolkit=11.6
-  - plyfile
   - python=3.7.13
   - pip=22.3.1
+
   - pytorch=1.12.1
-  - torchaudio=0.12.1
   - torchvision=0.13.1
+  - torchaudio=0.12.1
+
+  - cudatoolkit=11.6
+  - cuda-nvcc=11.6
+  - cuda-cudart-dev=11.6
+  - gcc_linux-64=11
+  - gxx_linux-64=11
+  - libxcrypt
+
+  - plyfile
   - tqdm
+  - ninja
+
   - pip:
-    - submodules/diff-gaussian-rasterization
-    - submodules/simple-knn
-    - submodules/fused-ssim
-    - opencv-python
-    - joblib
+      - opencv-python
+      - joblib
+      - submodules/diff-gaussian-rasterization
+      - submodules/simple-knn
+      - submodules/fused-ssim
+
+variables:
+  CC: x86_64-conda-linux-gnu-cc
+  CXX: x86_64-conda-linux-gnu-c++
+  TORCH_CUDA_ARCH_LIST: "7.0;7.5;8.0;8.6+PTX"
