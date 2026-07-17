@@ -49,6 +49,7 @@ class ModelParams(ParamGroup):
         self.sh_degree = 3
         self._source_path = ""
         self._model_path = ""
+        self._colmap_model_path = "sparse/0"
         self._images = "images"
         self._depths = ""
         self._resolution = -1
@@ -57,6 +58,12 @@ class ModelParams(ParamGroup):
         self.data_device = "cuda"
         self.eval = False
         super().__init__(parser, "Loading Parameters", sentinel)
+        parser.add_argument(
+            "--colmap_model_path",
+            dest="colmap_model_path",
+            default=self._colmap_model_path,
+            type=str,
+        )
 
     def extract(self, args):
         g = super().extract(args)
