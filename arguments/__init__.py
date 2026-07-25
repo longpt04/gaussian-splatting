@@ -58,12 +58,6 @@ class ModelParams(ParamGroup):
         self.data_device = "cuda"
         self.eval = False
         super().__init__(parser, "Loading Parameters", sentinel)
-        parser.add_argument(
-            "--colmap_model_path",
-            dest="colmap_model_path",
-            default=self._colmap_model_path,
-            type=str,
-        )
 
     def extract(self, args):
         g = super().extract(args)
